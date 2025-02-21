@@ -1,0 +1,16 @@
+```scala
+import scala.concurrent.Future
+import scala.concurrent.ExecutionContext.Implicits.global
+
+object ImplicitExecutionContextExampleSolution extends App {
+  val future = Future {
+    Thread.sleep(5000)
+    println("Future completed")
+    "Result"
+  }
+
+  val result = Await.result(future, scala.concurrent.duration.Duration.apply(10, "seconds"))
+
+  println(s"Result: $result")
+}
+```
